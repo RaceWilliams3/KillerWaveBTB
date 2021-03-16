@@ -14,7 +14,7 @@ public class PlayerSpawner : MonoBehaviour
     {
         actorModel = Object.Instantiate(Resources.Load("Script/ScriptableObject/Player_Default")) as SOActorModel;
         playerShip = GameObject.Instantiate(actorModel.actor) as GameObject;
-        playerShip.GetComponent<PlayerSpawner>().ActorStats(actorModel);
+        playerShip.GetComponent<Player>().ActorStats(actorModel);
 
         playerShip.transform.rotation = Quaternion.Euler(0, 180, 0);
         playerShip.transform.localScale = new Vector3(60, 60, 60);
