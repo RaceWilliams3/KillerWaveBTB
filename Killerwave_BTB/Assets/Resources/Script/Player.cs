@@ -58,6 +58,7 @@ public class Player : MonoBehaviour, IActorTemplate
 
     public void Die()
     {
+        GameManager.Instance.LifeLost();
         Destroy(this.gameObject);
     }
 
