@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityEngine.Monetization;
+using UnityEngine.Monetization;
 public class PlayerShipBuild : MonoBehaviour
 {
     string placementID_rewardedvideo = "rewardedVideo";
@@ -86,7 +86,7 @@ public class PlayerShipBuild : MonoBehaviour
 
     IEnumerator WaitForAd()
     {
-        string placementId = placementId_rewardedvideo;
+        string placementId = placementID_rewardedvideo;
         while (!Monetization.IsReady (placementId))
         {
             yield return null;
@@ -145,7 +145,7 @@ public class PlayerShipBuild : MonoBehaviour
     }
     void UpgradeToShip(string upgrade)
     {
-        GameObject shipItem = GameObject.Instantiate(Resources.Load("Prefab/Player/+upgrade")) as GameObject;
+        GameObject shipItem = GameObject.Instantiate(Resources.Load("Prefab/Player/"+upgrade)) as GameObject;
         shipItem.transform.SetParent(playerShip.transform);
         shipItem.transform.localPosition = Vector3.zero;
     }
@@ -206,11 +206,11 @@ public class PlayerShipBuild : MonoBehaviour
     {
         if (Application.platform == RuntimePlatform.IPhonePlayer)
         {
-            gameID = "replace with i[hone game id";
+            gameID = "4064064";
         }
         else if (Application.platform == RuntimePlatform.Android)
         {
-            gameID = "Replace with android id";
+            gameID = "4064065";
         }
         Monetization.Initialize(gameID, false);
     }
@@ -223,7 +223,7 @@ public class PlayerShipBuild : MonoBehaviour
         purchaseMade = false;
         bankObj = GameObject.Find("bank");
         bankObj.GetComponentInChildren<TextMesh>().text = bank.ToString();
-        buyButton = textBoxPanel.transform.Find("Buy ?").gameObject;
+        buyButton = textBoxPanel.transform.Find("BUY ?").gameObject;
 
         TurnOffPlayerShipVisuals();
         PreparePlayerShipForUpgrade();
