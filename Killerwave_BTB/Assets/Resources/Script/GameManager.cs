@@ -37,7 +37,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        LightSetup();
+        CameraSetup();
     }
     
     void CheckGameManagerIsInTheScene()
@@ -57,7 +58,7 @@ public class GameManager : MonoBehaviour
     {
         switch (sceneNumber)
         {
-            case 0: case 3: case 4: case 5: case 6:
+            case 3: case 4: case 5: case 6:
                 {
                     LightSetup();
                     CameraSetup();

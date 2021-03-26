@@ -389,6 +389,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 719e15d0742034c4e95c1ed63e7a2d66, type: 3}
+--- !u!1 &619877805 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1088013412868314, guid: 719e15d0742034c4e95c1ed63e7a2d66, type: 3}
+  m_PrefabInstance: {fileID: 619877804}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &619877806 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1950579529129072, guid: 719e15d0742034c4e95c1ed63e7a2d66, type: 3}
+  m_PrefabInstance: {fileID: 619877804}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &619877807 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1556134829789958, guid: 719e15d0742034c4e95c1ed63e7a2d66, type: 3}
+  m_PrefabInstance: {fileID: 619877804}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &745736803 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1140640989303674, guid: 719e15d0742034c4e95c1ed63e7a2d66, type: 3}
@@ -435,6 +450,11 @@ MonoBehaviour:
   - {fileID: 2003793131}
   - {fileID: 2119162502}
   - {fileID: 2009620880}
+  visualWeapons:
+  - {fileID: 619877807}
+  - {fileID: 619877806}
+  - {fileID: 619877805}
+  defaultPlayerShip: {fileID: 11400000, guid: f878d18c8450dda489a4a9ce74d13c4a, type: 2}
 --- !u!1 &1004982897 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1142615361867556, guid: 719e15d0742034c4e95c1ed63e7a2d66, type: 3}
