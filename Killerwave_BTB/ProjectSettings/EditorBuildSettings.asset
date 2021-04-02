@@ -6,29 +6,26 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scene/shop.unity
-    guid: a1b660729097e7f468e646766697599d
-  - enabled: 1
     path: Assets/Scene/bootUp.unity
     guid: 4124560499ebb56439025acec895c015
   - enabled: 1
     path: Assets/Scene/title.unity
     guid: f7c3db54674810b478fbc44dfe3e44a1
+  - enabled: 1
+    path: Assets/Scene/shop.unity
+    guid: a1b660729097e7f468e646766697599d
+  - enabled: 1
+    path: Assets/Scene/level1.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scene/level3.unity
+    guid: b5b82595c7e0f0f4d8166a9c3c338fd9
+  - enabled: 1
+    path: Assets/Scene/level2.unity
+    guid: d794375d2bf08c24a8d829930b2bf096
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/Scene/testLevel.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
-    path: Assets/Scene/level1.unity
-    guid: 40e58d911ba83a148a93cd99b6a5eb64
-  - enabled: 1
-    path: Assets/Scene/level2.unity
-    guid: 2f0cdfa45f31699449b2f79e6ba97134
-  - enabled: 1
-    path: Assets/Scene/level3.unity
-    guid: 5cbd4b08fa3025a47adbb4936b98f8e4
   - enabled: 1
     path: Assets/Scene/gameOver.unity
     guid: 407ebc0528568324c9ea200753db4f4c

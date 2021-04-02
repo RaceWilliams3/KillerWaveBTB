@@ -35,7 +35,6 @@ public class PlayerSpawner : MonoBehaviour
         playerShip.name = "Player";
         playerShip.transform.SetParent(this.transform);
         playerShip.transform.position = Vector3.zero;
+        playerShip.GetComponent<PlayerTransition>().enabled = true;
     }
 }
-
-

@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
     {
         switch (sceneNumber)
         {
-            case 3: case 4: case 5: case 6:
+            case 3: case 4: case 5:
                 {
                     LightSetup();
                     CameraSetup();
