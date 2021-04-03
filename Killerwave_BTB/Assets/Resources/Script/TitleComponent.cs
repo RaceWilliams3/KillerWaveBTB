@@ -1,22 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEngine.SceneManagement;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class TitleComponent : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+  void Update()
+  {
+    if (Input.GetMouseButtonUp(0))
     {
-        GameManager.playerLives = 3;
+      SceneManager.LoadScene("shop");
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetButtonDown("Fire1"))
-        {
-            SceneManager.LoadScene("shop");
-        }
-    }
+  }
 }

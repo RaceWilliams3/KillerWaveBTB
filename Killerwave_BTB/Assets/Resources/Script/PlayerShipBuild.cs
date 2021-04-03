@@ -179,7 +179,7 @@ public class PlayerShipBuild : MonoBehaviour
     {
         playerShip = GameObject.Instantiate(Resources.Load("Prefab/Player/Player_Ship")) as GameObject;
         playerShip.GetComponent<Player>().enabled = false;
-        playerShip.transform.position = new Vector3(0, 10000, 0);
+        playerShip.transform.position = new Vector3(0, 1000, 0);
         playerShip.GetComponent<IActorTemplate>().ActorStats(defaultPlayerShip);
 
     }    
