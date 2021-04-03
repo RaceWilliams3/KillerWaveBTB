@@ -1,18 +1,25 @@
-﻿using UnityEngine.SceneManagement;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class LoadSceneComponent : MonoBehaviour 
+public class LoadSceneComponent : MonoBehaviour
 {
- float timer = 0;
- public string loadThisScene;
+    float timer = 0;
+    public string loadThisScene;
+    // Start is called before the first frame update
+    void Start()
+    {
+        GameManager.Instance.GetComponentInChildren<ScoreManager>().ResetScore();
+    }
 
- void Update()
- {
- timer += Time.deltaTime;
-
- if (timer > 3)
- {
- SceneManager.LoadScene(loadThisScene);
- }
- }
+    // Update is called once per frame
+    void Update()
+    {
+        timer += Time.deltaTime;
+        if (timer > 3)
+        {
+            SceneManager.LoadScene(loadThisScene);
+        }
+    }
 }
