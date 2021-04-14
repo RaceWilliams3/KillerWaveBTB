@@ -37,7 +37,32 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SetLivesDisplay(playerLives);
+    }
 
+    public void SetLivesDisplay(int players)
+    {
+        if (GameObject.Find("lives"))
+        {
+            GameObject lives = GameObject.Find("lives");
+
+            if (lives.transform.childCount < 1)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    GameObject life = GameObject.Instantiate(Resources.Load("Prefab/life")) as GameObject;
+                    life.transform.SetParent(lives.transform);
+                }
+            }
+            for (int i = 0; i < lives.transform.childCount; i++)
+            {
+                lives.transform.GetChild(i).localScale = new Vector3(1, 1, 1);
+            }
+            for (int i = 0; i < (lives.transform.childCount - players); i++)
+            {
+                lives.transform.GetChild(lives.transform.childCount -i -1).localScale = Vector3.zero;
+            }
+        }        
     }
     
     void CheckGameManagerIsInTheScene()
@@ -72,6 +97,7 @@ public class GameManager : MonoBehaviour
         currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
         LightandCameraSetup(currentScene);
     }
+
 
     
     void CameraSetup()

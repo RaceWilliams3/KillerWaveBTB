@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScenesManager : MonoBehaviour
 {
@@ -83,7 +84,17 @@ public class ScenesManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    private void OnSceneLoaded(Scene aScene, LoadSceneMode aMode)
+    {
+        
+        GetComponent<GameManager>().SetLivesDisplay(GameManager.playerLives);
+        if(GameObject.Find("score"))
+        {
+            GameObject.Find("score").GetComponent<Text>().text = ScoreManager.playerScore.ToString();
+            Debug.Log("Test");
+        }
     }
 
     // Update is called once per frame

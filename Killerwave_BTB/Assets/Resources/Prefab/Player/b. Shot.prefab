@@ -94,4 +94,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b02afabb11eae8944b9bbc918093475e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bShotBullet: {fileID: 1218136449366864, guid: c20fc9da48f847d43982d8bf20857fb3, type: 3}
+  bShotBullet: {fileID: 100000, guid: a7c3f2886cfd4f54990e7035a71ec95b, type: 3}
