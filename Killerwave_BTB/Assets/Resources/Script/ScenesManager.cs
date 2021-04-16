@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class ScenesManager : MonoBehaviour
 {
@@ -10,7 +11,15 @@ public class ScenesManager : MonoBehaviour
     float[] endLevelTimer = { 30, 30, 45 };
     int currentSceneNumber = 0;
     bool gameEnding = false;
+
+    public MusicMode musicMode;
+    public enum MusicMode
+    {
+        noSound, fadeDown, MusicOn
+    }
+
     Scenes scenes;
+
     public enum Scenes
     {
         bootUp,
@@ -55,6 +64,12 @@ public class ScenesManager : MonoBehaviour
         {
             case Scenes.level1: case Scenes.level2: case Scenes.level3:
                 {
+                    if (GetComponentInChildren<AudioSource>().clip == null)
+                    {
+                        AudioClip lvlMusic = Resources.Load<AudioClip> ("Sound/lvlMusic") as AudioClip;
+                        GetComponentInChildren<AudioSource>().clip = lvlMusic;
+                        GetComponentInChildren<AudioSource>().Play();
+                    }
                     if (gameTimer < endLevelTimer[currentSceneNumber-3])
                     {
                         gameTimer += Time.deltaTime;
@@ -96,7 +111,32 @@ public class ScenesManager : MonoBehaviour
             Debug.Log("Test");
         }
     }
-
+     IEnumerator MusicVolume (MusicMode musicMode)
+    {
+        switch (musicMode)
+        {
+            case MusicMode.noSound:
+                {
+                    GetComponentInChildren<AudioSource>().Stop();
+                    break;
+                }
+            case MusicMode.fadeDown:
+                {
+                    GetComponentInChildren<AudioSource>().volume -= Time.delaTime / 3;
+                    break;
+                }
+            case MusicMode.MusicOn:
+                {
+                    if (GetComponentInChildren<AudioSource>().clip != null)
+                    {
+                        GetComponentInChildren<AudioSource>().Play();
+                        GetComponentInChildren<AudioSource>().volume = 1;
+                    }
+                    break;
+                }
+        }
+        yield return new WaitForSeconds(0.1f);
+    }
     // Update is called once per frame
     void Update()
     {
