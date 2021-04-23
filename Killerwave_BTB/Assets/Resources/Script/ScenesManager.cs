@@ -15,7 +15,7 @@ public class ScenesManager : MonoBehaviour
     public MusicMode musicMode;
     public enum MusicMode
     {
-        noSound, fadeDown, MusicOn
+        noSound, fadeDown, musicOn
     }
 
     Scenes scenes;
@@ -32,11 +32,13 @@ public class ScenesManager : MonoBehaviour
     }
     public void ResetScene()
     {
+        StartCoroutine(MusicVolume(MusicMode.noSound));
         gameTimer = 0;
         SceneManager.LoadScene(GameManager.currentScene);
     }
     void NextLevel()
     {
+        StartCoroutine(MusicVolume(MusicMode.musicOn));
         gameEnding = false;
         gameTimer = 0;
         SceneManager.LoadScene(GameManager.currentScene + 1);
@@ -82,16 +84,40 @@ public class ScenesManager : MonoBehaviour
                             if (SceneManager.GetActiveScene().name != "level3")
                             {
                                 GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerTransition>().LevelEnds = true;
+                                StartCoroutine(MusicVolume(MusicMode.fadeDown));
                             }
                             else
                             {
                                 GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerTransition>().GameCompleted = true;
 
                             }
+
+                            void SendInJsonFormat(string lastLevel)
+                            {
+                                if (lastLevel == "level3")
+                                {
+                                    GameStats gameStats = new GameStats();
+                                    gameStats.livesLeft = GameManager.playerLives;
+                                    gameStats.completed = System.DateTime.Now.ToString();
+                                    gameStats.score = ScoreManager.playerScore;
+                                    string json = JsonUtility.ToJson(gameStats, true);
+                                    Debug.Log(json);
+
+                                    Debug.Log(Application.persistentDataPath + "/GameStatsSaved.json");
+                                    System.IO.File.WriteAllText(Application.persistentDataPath + "/GameStatsSaved.json", json);
+                                }
+                            }
+
                             Invoke("NextLevel", 4);
 
                         }
                     }
+
+                    break;
+                }
+            default:
+                {
+                    GetComponentInChildren<AudioSource>().clip = null;
                     break;
                 }
         }
@@ -99,11 +125,13 @@ public class ScenesManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(MusicVolume(MusicMode.musicOn));
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
     private void OnSceneLoaded(Scene aScene, LoadSceneMode aMode)
     {
-        
+        StartCoroutine(MusicVolume(MusicMode.musicOn));
+
         GetComponent<GameManager>().SetLivesDisplay(GameManager.playerLives);
         if(GameObject.Find("score"))
         {
@@ -122,10 +150,10 @@ public class ScenesManager : MonoBehaviour
                 }
             case MusicMode.fadeDown:
                 {
-                    GetComponentInChildren<AudioSource>().volume -= Time.delaTime / 3;
+                    GetComponentInChildren<AudioSource>().volume -= Time.deltaTime / 3;
                     break;
                 }
-            case MusicMode.MusicOn:
+            case MusicMode.musicOn:
                 {
                     if (GetComponentInChildren<AudioSource>().clip != null)
                     {
